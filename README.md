@@ -31,7 +31,7 @@ Il modulo Assistente giuridico italiano può utilizzare Firecrawl quando il rela
 
 ## Applicazione Windows e Assistente AI
 
-La cartella [app](app/) contiene l'applicazione dello Studio. È configurata la compilazione automatica dell'installer Windows tramite GitHub Actions: consultare [le istruzioni](app/README.md) per scaricare il file Setup dopo il completamento del workflow. Il modulo Assistente AI personale prepara richieste giuridiche sul PC, senza API, chiavi o fatturazione API. L'utente controlla il testo, lo copia e lo invia manualmente tramite il proprio account ChatGPT. Non è un modello AI offline e non trasmette automaticamente fascicoli. La prima versione desktop non è ancora firmata digitalmente.
+La cartella [app](app/) contiene l'applicazione dello Studio. È configurata la compilazione automatica dell'installer Windows tramite GitHub Actions: consultare [le istruzioni](app/README.md) per scaricare il file Setup dopo il completamento del workflow. Il modulo Assistente AI integra una chat diretta con OpenAI Responses API. La chiave API è cifrata sul PC tramite Electron safeStorage/Windows DPAPI e non è inserita nel repository né esposta al renderer. Le richieste sono trasmesse a OpenAI con store=false; la conversazione resta in memoria durante la sessione. La fatturazione API è separata dall'abbonamento ChatGPT. Non è un modello offline. La prima versione desktop non è ancora firmata digitalmente.
 
 ## Modelli
 - [Linee guida per l'archivio dei modelli](templates/README.md).
