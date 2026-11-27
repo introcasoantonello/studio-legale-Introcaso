@@ -4,7 +4,10 @@
 Il workflow GitHub Actions compila automaticamente l'installer Windows. Aprire la scheda Actions del repository, selezionare l'esecuzione completata e scaricare l'artefatto **Studio-Legale-Introcaso-Windows-Installer**. Estrarre lo ZIP e avviare il file Setup `.exe`.
 
 ## Moduli
-Fascicoli, bozze atti, assistente GPT integrato, ricerca giuridica, scadenziario, calcoli aritmetici e archivio modelli.
+Fascicoli, redazione assistita, assistente GPT integrato, ricerca giuridica online con fonti, scadenziario, calcoli aritmetici, archivio modelli e collegamento alla cartella ATTI locale.
+
+### Redazione assistita multidisciplinare
+La sezione **Redazione atti** comprende percorsi guidati per diritto civile e processo civile; diritto penale e procedura penale; processo penale minorile; diritto amministrativo e processo davanti al TAR; famiglia e tutela dei minori; lavoro e previdenza; esecuzione civile e recupero crediti; esecuzione penale e sorveglianza; responsabilità civile e infortunistica; societario e contratti. Tra le tipologie selezionabili sono inclusi denuncia-querela, opposizione all'archiviazione ex art. 410 c.p.p., memoria difensiva, atti cautelari e di riesame, impugnazioni penali, atti per esecuzione e sorveglianza, oltre agli atti civili e amministrativi. Il percorso genera una richiesta strutturata per l'assistente GPT usando esclusivamente i fatti e le istruzioni inseriti dall'utente. L'atto prodotto richiede sempre controllo professionale e verifica delle fonti e dei termini.
 
 ## Assistente GPT e configurazione API
 1. Creare una API key nel proprio progetto OpenAI Platform.
