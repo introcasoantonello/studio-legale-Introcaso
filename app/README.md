@@ -4,6 +4,8 @@
 Il workflow GitHub Actions compila automaticamente l'installer Windows. Aprire la scheda Actions del repository, selezionare l'esecuzione completata e scaricare l'artefatto **Studio-Legale-Introcaso-Windows-Installer**. Estrarre lo ZIP e avviare il file Setup `.exe`.
 
 ## Moduli
+
+Versione 1.5.0: OCR locale dei PDF scannerizzati (fino a 30 pagine per documento) e accesso integrato alla Banca Dati di Merito del Ministero della Giustizia. Il modello linguistico italiano OCR viene scaricato al primo utilizzo e richiede una connessione internet per il download iniziale.
 Fascicoli, redazione assistita, assistente GPT integrato, ricerca giuridica online con fonti, scadenziario, calcoli aritmetici, archivio modelli e collegamento alla cartella ATTI locale.
 
 ### Redazione assistita multidisciplinare
@@ -33,7 +35,7 @@ I collegamenti HTTPS alle fonti istituzionali e a ChatGPT si aprono nel browser 
 
 
 ## Cartella locale ATTI
-Dal menu **Cartella ATTI** selezionare una cartella sul PC. Il percorso viene memorizzato localmente nel profilo dell'app. La scansione include PDF, DOCX, TXT e RTF (massimo 2.000 file; massimo 10 MB per documento). È possibile cercare parole nel testo dei documenti e aggiungere manualmente un documento alla chat GPT. Il contenuto viene trasmesso a OpenAI soltanto quando si invia la conversazione, non durante la scansione. I file DOC legacy, le scansioni senza testo OCR e i PDF protetti da password non sono leggibili in questa versione. I documenti restano nella cartella originale e non vengono copiati nel repository.
+Dal menu **Cartella ATTI** selezionare una cartella sul PC. Il percorso viene memorizzato localmente nel profilo dell'app. La scansione include PDF, DOCX, TXT e RTF (massimo 2.000 file; massimo 10 MB per documento). È possibile cercare parole nel testo dei documenti e aggiungere manualmente un documento alla chat GPT. Il contenuto viene trasmesso a OpenAI soltanto quando si invia la conversazione, non durante la scansione. I file DOC legacy e i PDF protetti da password non sono leggibili in questa versione. I PDF immagine vengono sottoposti a OCR in italiano, entro il limite di 30 pagine per documento. I documenti restano nella cartella originale e non vengono copiati nel repository.
 
 
 ## Ricerca giuridica online (versione 1.3.0)
@@ -50,3 +52,10 @@ La sezione **Italgiure** apre la piattaforma ufficiale del Ministero della Giust
 
 ## Finestra Italgiure integrata (1.4.3)
 La sezione **Italgiure** apre il portale ufficiale in una finestra dedicata dell'applicazione Electron, con sessione browser persistente separata dal resto dell'app. L'utente effettua personalmente il login nel portale; le credenziali non sono lette, inviate all'assistente AI o salvate dall'app come password. I cookie/sessione sono gestiti dal browser incorporato. È disponibile anche l'apertura nel browser esterno. Non è stata implementata un'API di interrogazione automatica: non è stata individuata documentazione pubblica ufficiale che esponga un'interfaccia di questo tipo. Per analizzare i provvedimenti, scaricarli dal portale e inserirli nella cartella ATTI; l'invio all'API AI avviene solo su iniziativa esplicita dell'utente.
+
+
+## Banca Dati di Merito (1.5.0)
+La sezione **Banche dati** apre la Banca Dati di Merito del Ministero della Giustizia in una finestra Electron dedicata, con sessione persistente separata e accesso diretto alla ricerca dei provvedimenti. Login, consultazione e download restano manuali e sotto il controllo dell'utente. Non è stata verificata né implementata un'API pubblica di ricerca automatica: i provvedimenti si scaricano dal portale e si importano nella cartella ATTI. Restano applicabili le condizioni d'uso del portale.
+
+## OCR dei PDF scannerizzati (1.5.0)
+Quando il PDF non contiene testo estraibile, l'app prova l'OCR locale con Tesseract in lingua italiana e PDF.js. Il riconoscimento è limitato a 30 pagine per documento. Il modello italiano viene scaricato al primo utilizzo; per questo passaggio è necessaria una connessione internet. Il testo riconosciuto può contenere errori e deve essere confrontato con la scansione originale. I file non vengono caricati automaticamente su OpenAI: la trasmissione avviene solo quando l'utente seleziona il documento e avvia l'analisi AI.
