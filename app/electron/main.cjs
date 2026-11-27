@@ -122,7 +122,7 @@ async function extractDocument(fullPath) {
     const pdfParse = require("pdf-parse");
     const parsed = await pdfParse(buffer);
     const extracted = (parsed.text || "").trim();
-    if (extracted.length >= 80) return extracted;
+    if (extracted.length >= Math.max(80, (parsed.numpages || 1) * 100)) return extracted;
     return await ocrPdf(buffer);
   }
   if (ext === ".docx") {
