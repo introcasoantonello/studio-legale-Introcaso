@@ -25,6 +25,10 @@ Repository di skill operative e linee guida per supportare le attività dello St
 
 Il modulo Assistente giuridico italiano può utilizzare Firecrawl quando il relativo connettore è effettivamente collegato a ChatGPT, per cercare e acquisire contenuti di pagine pubbliche. Firecrawl è uno strumento di ricerca web, non una banca dati giuridica ufficiale e non garantisce copertura completa. Le fonti primarie istituzionali restano prioritarie; l'accesso a Italgiure, DeJure o altri servizi riservati non è implicato dal collegamento Firecrawl.
 
+## Applicazione web locale
+
+È disponibile una prima applicazione utilizzabile dal browser, senza installazione: [apri la cartella dell'app](app/) e consulta le [istruzioni di avvio](app/README.md). Include fascicoli, bozze di atti, traccia per la ricerca giuridica, scadenziario, calcoli aritmetici e archivio modelli. I dati restano nel browser del dispositivo. Questa versione non integra ancora AI, banche dati giuridiche o deposito telematico.
+
 ## Modelli
 - [Linee guida per l'archivio dei modelli](templates/README.md).
 
