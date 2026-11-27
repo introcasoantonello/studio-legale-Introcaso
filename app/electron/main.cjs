@@ -51,6 +51,19 @@ ipcMain.handle("ai:chat", async (_event, payload) => {
       model,
       store: false,
       instructions: "Sei l'assistente giuridico personale dello Studio Legale Introcaso, in Italia. Rispondi in italiano giuridico, con precisione e stile discorsivo. Non inventare fatti, norme, sentenze, numeri, date o termini. Distingui ciò che risulta dai documenti, le allegazioni, le inferenze e ciò che deve essere verificato. Quando la richiesta riguarda diritto vigente o giurisprudenza attuale, segnala la necessità di fonti aggiornate e cita soltanto riferimenti effettivamente verificati. Per gli atti rispetta le istruzioni dell'avvocato e non alterare arbitrariamente modelli forniti. Evidenzia lacune, criticità processuali, oneri probatori e verifiche necessarie. Non sostituirti al professionista: ogni elaborato è soggetto al suo controllo.",
+      ...(payload?.webSearch ? {
+        tools: [{
+          type: "web_search",
+          search_context_size: "high",
+          ...(payload?.officialOnly ? { filters: { allowed_domains: [
+            "normattiva.it", "gazzettaufficiale.it", "cortedicassazione.it",
+            "cortecostituzionale.it", "giustizia-amministrativa.it",
+            "giustizia.it", "eur-lex.europa.eu", "curia.europa.eu"
+          ] } } : {})
+        }],
+        tool_choice: "required",
+        include: ["web_search_call.action.sources"]
+      } : {}),
       input: messages
     }),
     signal: AbortSignal.timeout(120000)
@@ -60,10 +73,15 @@ ipcMain.handle("ai:chat", async (_event, payload) => {
     const message = data?.error?.message || ("Errore API HTTP " + response.status);
     throw new Error(message.slice(0, 700));
   }
-  const text = (data.output || []).flatMap(item => item.content || [])
-    .filter(part => part.type === "output_text").map(part => part.text).join("\n").trim();
+  const outputParts = (data.output || []).flatMap(item => item.content || [])
+    .filter(part => part.type === "output_text");
+  const text = outputParts.map(part => part.text).join("\n").trim();
+  const citations = outputParts.flatMap(part => (part.annotations || [])
+    .filter(a => a.type === "url_citation" && a.url)
+    .map(a => ({ title: a.title || a.url, url: a.url })))
+    .filter((item, index, all) => all.findIndex(x => x.url === item.url) === index);
   if (!text) throw new Error("La risposta API non contiene testo leggibile.");
-  return { text };
+  return { text, citations };
 });
 
 
