@@ -111,7 +111,7 @@ async function extractDocument(fullPath) {
     return parsed.value || "";
   }
   if (ext === ".txt") return buffer.toString("utf8");
-  if (ext === ".rtf") return buffer.toString("utf8").replace(/\\\\[a-zA-Z]+-?\\d* ?/g, " ").replace(/[{}]/g, " ").replace(/\\\\'[0-9a-fA-F]{2}/g, " ").replace(/\\s+/g, " ").trim();
+  if (ext === ".rtf") return buffer.toString("utf8").replace(/\\[a-zA-Z]+-?\d* ?/g, " ").replace(/[{}]/g, " ").replace(/\\'[0-9a-fA-F]{2}/g, " ").replace(/\s+/g, " ").trim();
   throw new Error("Formato non supportato. Sono ammessi PDF, DOCX, TXT e RTF.");
 }
 ipcMain.handle("library:get-folder", async () => ({ folder: await getLibraryPath() }));
@@ -150,7 +150,7 @@ ipcMain.handle("library:search", async (_event, query) => {
       const content = await extractDocument(path.join(root, file.relativePath));
       const index = content.toLocaleLowerCase("it").indexOf(term);
       if (index >= 0) {
-        const excerpt = content.slice(Math.max(0, index - 180), Math.min(content.length, index + term.length + 260)).replace(/\\s+/g, " ").trim();
+        const excerpt = content.slice(Math.max(0, index - 180), Math.min(content.length, index + term.length + 260)).replace(/\s+/g, " ").trim();
         results.push({ ...file, excerpt });
       }
     } catch (_) {}
