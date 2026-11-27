@@ -46,3 +46,7 @@ Le risposte dell'assistente possono essere esportate in formato Word compatibile
 
 ## Collegamento a Italgiure (1.4.2)
 La sezione **Italgiure** apre la piattaforma ufficiale del Ministero della Giustizia e il sito di Cassa Forense. L'autenticazione avviene direttamente sul portale, con le credenziali personali abilitate; l'applicazione non raccoglie né conserva username o password e non automatizza l'accesso, le ricerche o i download. Per analizzare un provvedimento, scaricarlo dal portale in PDF o DOCX e salvarlo nella cartella locale collegata in **Cartella ATTI**. Da lì è possibile leggerlo, confrontarlo con altri documenti o aggiungerlo manualmente alla chat. I documenti vengono trasmessi all'API OpenAI soltanto quando l'utente avvia esplicitamente l'analisi.
+
+
+## Finestra Italgiure integrata (1.4.3)
+La sezione **Italgiure** apre il portale ufficiale in una finestra dedicata dell'applicazione Electron, con sessione browser persistente separata dal resto dell'app. L'utente effettua personalmente il login nel portale; le credenziali non sono lette, inviate all'assistente AI o salvate dall'app come password. I cookie/sessione sono gestiti dal browser incorporato. È disponibile anche l'apertura nel browser esterno. Non è stata implementata un'API di interrogazione automatica: non è stata individuata documentazione pubblica ufficiale che esponga un'interfaccia di questo tipo. Per analizzare i provvedimenti, scaricarli dal portale e inserirli nella cartella ATTI; l'invio all'API AI avviene solo su iniziativa esplicita dell'utente.
