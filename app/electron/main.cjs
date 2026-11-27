@@ -78,7 +78,7 @@ function createWindow() {
   });
   win.loadFile(path.join(__dirname, "..", "index.html"));
   win.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith("https://chatgpt.com/")) shell.openExternal(url);
+    if (url.startsWith("https://")) shell.openExternal(url);
     return { action: "deny" };
   });
 }
