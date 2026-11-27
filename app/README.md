@@ -26,4 +26,4 @@ I dati dei fascicoli, delle bozze e dello scadenzario già gestiti dall'applicaz
 Non inviare dati identificativi, sanitari o coperti da segreto professionale senza aver valutato necessità, anonimizzazione, base giuridica e misure di sicurezza. Predisporre backup protetti. Non inserire mai chiavi API nel codice o su GitHub.
 
 ## Limiti professionali
-Il modulo non deposita atti, non effettua notifiche e non sostituisce la verifica professionale. Normativa, giurisprudenza, termini e bozze devono essere controllati dall'avvocato.
+I collegamenti HTTPS alle fonti istituzionali e a ChatGPT si aprono nel browser esterno. Il modulo non deposita atti, non effettua notifiche e non sostituisce la verifica professionale. Normativa, giurisprudenza, termini e bozze devono essere controllati dall'avvocato.
