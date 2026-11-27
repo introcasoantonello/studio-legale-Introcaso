@@ -31,7 +31,7 @@ Il modulo Assistente giuridico italiano può utilizzare Firecrawl quando il rela
 
 ## Applicazione Windows e Assistente AI
 
-La cartella [app](app/) contiene l'applicazione dello Studio. È configurata la compilazione automatica dell'installer Windows tramite GitHub Actions: consultare [le istruzioni](app/README.md) per scaricare il file Setup dopo il completamento del workflow. Il modulo Assistente AI prepara prompt giuridici da copiare in ChatGPT; non trasmette automaticamente fascicoli e non sostituisce la verifica professionale. La prima versione desktop non è ancora firmata digitalmente.
+La cartella [app](app/) contiene l'applicazione dello Studio. È configurata la compilazione automatica dell'installer Windows tramite GitHub Actions: consultare [le istruzioni](app/README.md) per scaricare il file Setup dopo il completamento del workflow. Il modulo Assistente AI personale prepara richieste giuridiche sul PC, senza API, chiavi o fatturazione API. L'utente controlla il testo, lo copia e lo invia manualmente tramite il proprio account ChatGPT. Non è un modello AI offline e non trasmette automaticamente fascicoli. La prima versione desktop non è ancora firmata digitalmente.
 
 ## Modelli
 - [Linee guida per l'archivio dei modelli](templates/README.md).
