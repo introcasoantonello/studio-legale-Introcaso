@@ -1,5 +1,6 @@
 const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("studioAI", {
+  openItalgiure: () => ipcRenderer.invoke("italgiure:open"),
   status: () => ipcRenderer.invoke("ai:status"),
   saveKey: key => ipcRenderer.invoke("ai:save-key", key),
   deleteKey: () => ipcRenderer.invoke("ai:delete-key"),
