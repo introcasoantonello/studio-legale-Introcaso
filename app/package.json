@@ -1,6 +1,6 @@
 {
   "name": "studio-legale-introcaso",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "Gestione locale dello Studio Legale Introcaso con assistente GPT integrato",
   "main": "electron/main.cjs",
   "author": "Studio Legale Introcaso",
@@ -36,10 +36,16 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
-    }
+    },
+    "asarUnpack": [
+      "node_modules/@napi-rs/canvas/**"
+    ]
   },
   "dependencies": {
     "mammoth": "1.9.1",
-    "pdf-parse": "1.1.1"
+    "pdf-parse": "1.1.1",
+    "pdfjs-dist": "4.10.38",
+    "@napi-rs/canvas": "0.1.68",
+    "tesseract.js": "6.0.1"
   }
 }
