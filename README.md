@@ -2,10 +2,14 @@
 
 Repository di supporto al lavoro dello Studio Legale Introcaso.
 
-## Skill disponibili
+## Skill
 
-- [Diritto italiano](skills/diritto-italiano/SKILL.md): protocollo operativo per ricerca normativa e giurisprudenziale, analisi di fascicoli e redazione di atti.
-- [Modelli di atti](templates/README.md): indicazioni per conservare e riutilizzare i modelli dello Studio.
+- [Diritto italiano](skills/diritto-italiano/SKILL.md): ricerca normativa e giurisprudenziale, analisi dei fascicoli e verifica delle fonti.
+- [Redazione atti civili](skills/redazione-atti-civili/SKILL.md): redazione e revisione di atti giudiziari di diritto civile e procedura civile, controllo processuale, strategia difensiva e rispetto dei modelli dello Studio.
+
+## Modelli
+
+- [Indicazioni per i modelli dello Studio](templates/README.md).
 
 ## Regole fondamentali
 
