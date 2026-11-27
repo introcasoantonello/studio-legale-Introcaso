@@ -1,17 +1,18 @@
-# Applicazione Studio Legale Introcaso
+# Studio Legale Introcaso — applicazione
 
-Aprire `index.html` con un browser aggiornato (Chrome, Edge o Firefox). Non serve installazione né server.
+## Installazione Windows
+Il repository compila automaticamente un programma Windows tramite GitHub Actions. Dopo l'esecuzione del workflow **Build Windows desktop app**, aprire la scheda Actions del repository, selezionare l'esecuzione completata e scaricare l'artefatto **Studio-Legale-Introcaso-Windows-Installer**. Estrarre lo ZIP e avviare il file Setup `.exe`.
 
-## Moduli inclusi
-- Fascicoli: registrazione locale dei riferimenti e delle annotazioni.
-- Redazione atti: salvataggio di bozze nel browser ed esportazione in TXT.
-- Ricerca giuridica: preparazione di una traccia e collegamenti a fonti istituzionali.
-- Scadenziario: promemoria con data e note sul calcolo.
-- Compensi e calcoli: calcolo aritmetico parametrico, da verificare.
-- Archivio modelli: collegamento alla cartella modelli GitHub.
+Il programma è confezionato con Electron e utilizza i file locali dell'applicazione. Non è ancora firmato digitalmente: Windows SmartScreen potrebbe mostrare un avviso.
 
-## Dati e sicurezza
-I dati vengono conservati nel localStorage del browser sul dispositivo in uso. Non sono sincronizzati, non sono cifrati da questa applicazione e possono essere cancellati dal browser. Non inserire dati identificativi o riservati dei clienti su dispositivi condivisi. Eseguire copie di sicurezza in modo sicuro.
+## Moduli
+Fascicoli; redazione e salvataggio bozze; Assistente AI per preparare richieste da copiare in ChatGPT; ricerca giuridica; scadenziario manuale; calcoli aritmetici; archivio modelli.
 
-## Limiti
-Questa è una prima versione offline: non integra un modello AI, non interroga banche dati giuridiche, non calcola automaticamente termini processuali e non deposita o notifica atti. Il professionista deve verificare ogni dato, fonte, termine e calcolo.
+## AI e banche dati
+L'assistente prepara il prompt e apre ChatGPT dopo aver copiato la richiesta. Non invia automaticamente fascicoli. Per un collegamento API diretto occorre configurare un servizio backend e una chiave API custodita lato server: non inserire chiavi segrete nei file dell'app. Il programma non accede automaticamente a Italgiure, DeJure o altre banche dati riservate.
+
+## Dati e riservatezza
+I dati sono conservati nel profilo locale dell'app/browser tramite localStorage. Non sono sincronizzati né cifrati da questa applicazione. Effettuare backup sicuri e non usare dispositivi condivisi per dati riservati. Non inserire fascicoli identificabili in servizi esterni senza aver valutato base giuridica, istruzioni, misure di sicurezza e segreto professionale.
+
+## Limiti professionali
+Non effettua depositi o notifiche, non determina autonomamente termini processuali e non sostituisce la verifica dell'avvocato. Tutte le bozze, fonti, scadenze e somme devono essere controllate.
