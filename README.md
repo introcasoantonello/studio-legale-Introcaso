@@ -4,7 +4,8 @@ Repository di skill operative e linee guida per supportare le attività dello St
 
 ## Moduli disponibili
 
-### Ricerca e analisi
+### Coordinamento e ricerca
+- [Assistente giuridico italiano](skills/assistente-giuridico-italiano/SKILL.md) — modulo di ingresso: coordina le skill, definisce il metodo di ricerca normativa e giurisprudenziale e disciplina l'uso controllato di Firecrawl.
 - [Diritto italiano](skills/diritto-italiano/SKILL.md) — metodo generale, fonti normative, analisi documentale e affidabilità.
 - [Ricerca giurisprudenziale avanzata](skills/ricerca-giurisprudenziale/SKILL.md) — ricerca e verifica di Cassazione, Corte costituzionale, giudici di merito e orientamenti.
 - [Analisi dei fascicoli](skills/analisi-fascicoli/SKILL.md) — inventario documenti, cronologia, matrice fatti/prove, incongruenze e lacune.
@@ -19,6 +20,10 @@ Repository di skill operative e linee guida per supportare le attività dello St
 - [Compensi e spese](skills/calcolo-compensi-spese/SKILL.md) — parcelle, parametri, accessori, interessi, precetti e residui.
 - [Archivio modelli dello Studio](skills/archivio-modelli-studio/SKILL.md) — classificazione, riuso controllato, anonimizzazione e versionamento.
 - [Controllo qualità degli atti](skills/controllo-qualita-atti/SKILL.md) — controllo fattuale, giuridico, processuale e redazionale.
+
+## Integrazione con la ricerca web
+
+Il modulo Assistente giuridico italiano può utilizzare Firecrawl quando il relativo connettore è effettivamente collegato a ChatGPT, per cercare e acquisire contenuti di pagine pubbliche. Firecrawl è uno strumento di ricerca web, non una banca dati giuridica ufficiale e non garantisce copertura completa. Le fonti primarie istituzionali restano prioritarie; l'accesso a Italgiure, DeJure o altri servizi riservati non è implicato dal collegamento Firecrawl.
 
 ## Modelli
 - [Linee guida per l'archivio dei modelli](templates/README.md).
@@ -38,12 +43,12 @@ Repository di skill operative e linee guida per supportare le attività dello St
 - Non inventare fatti, documenti, norme, precedenti, numeri, date, importi o termini.
 - Dichiarare quali fonti sono state realmente consultate e quali verifiche restano da fare.
 - Non dichiarare accesso a Italgiure o DeJure se non è avvenuto concretamente.
-- Proteggere segreto professionale e dati personali; non caricare fascicoli identificabili in repository pubblici.
+- Proteggere segreto professionale e dati personali; non caricare fascicoli identificabili in repository pubblici o servizi esterni.
 - Nessun deposito, notifica, invio o assunzione di impegni senza approvazione dell'avvocato.
 
 ## Nota sull'attivazione
 
-La presenza dei file su GitHub non equivale all'installazione o all'attivazione automatica delle skill in ChatGPT. Per utilizzarle in un ambiente compatibile occorre importare o richiamare i relativi file secondo le funzioni supportate da quell'ambiente.
+La presenza dei file su GitHub non equivale all'installazione o all'attivazione automatica delle skill in ChatGPT. Per utilizzarle in un ambiente compatibile occorre importare o richiamare i relativi file secondo le funzioni supportate da quell'ambiente. Il connettore Firecrawl, se collegato, è una risorsa distinta dalle skill conservate nel repository.
 
 ## Utilizzo con ChatGPT
 
