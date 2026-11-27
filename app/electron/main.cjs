@@ -121,7 +121,9 @@ async function extractDocument(fullPath) {
   if (ext === ".pdf") {
     const pdfParse = require("pdf-parse");
     const parsed = await pdfParse(buffer);
-    return parsed.text || "";
+    const extracted = (parsed.text || "").trim();
+    if (extracted.length >= 80) return extracted;
+    return await ocrPdf(buffer);
   }
   if (ext === ".docx") {
     const mammoth = require("mammoth");
@@ -131,6 +133,31 @@ async function extractDocument(fullPath) {
   if (ext === ".txt") return buffer.toString("utf8");
   if (ext === ".rtf") return buffer.toString("utf8").replace(/\\[a-zA-Z]+-?\d* ?/g, " ").replace(/[{}]/g, " ").replace(/\\'[0-9a-fA-F]{2}/g, " ").replace(/\s+/g, " ").trim();
   throw new Error("Formato non supportato. Sono ammessi PDF, DOCX, TXT e RTF.");
+}
+async function ocrPdf(buffer) {
+  let worker;
+  try {
+    const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
+    const { createCanvas } = require("@napi-rs/canvas");
+    const { createWorker } = require("tesseract.js");
+    const pdf = await pdfjs.getDocument({ data: new Uint8Array(buffer), disableWorker: true, useSystemFonts: true }).promise;
+    if (pdf.numPages > 30) throw new Error("OCR limitato a 30 pagine per documento.");
+    worker = await createWorker("ita");
+    const pages = [];
+    for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
+      const page = await pdf.getPage(pageNo);
+      const viewport = page.getViewport({ scale: 1.65 });
+      const canvas = createCanvas(Math.ceil(viewport.width), Math.ceil(viewport.height));
+      await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
+      const result = await worker.recognize(canvas.toBuffer("image/png"));
+      pages.push("\n[Pagina " + pageNo + "]\n" + (result.data.text || ""));
+    }
+    return pages.join("\n").trim();
+  } catch (error) {
+    throw new Error("OCR del PDF non riuscito: " + (error?.message || String(error)));
+  } finally {
+    if (worker) await worker.terminate().catch(() => {});
+  }
 }
 ipcMain.handle("library:get-folder", async () => ({ folder: await getLibraryPath() }));
 ipcMain.handle("library:choose-folder", async () => {
@@ -178,32 +205,30 @@ ipcMain.handle("library:search", async (_event, query) => {
 
 
 let italgiureWindow = null;
-ipcMain.handle("italgiure:open", async () => {
-  if (italgiureWindow && !italgiureWindow.isDestroyed()) {
-    italgiureWindow.focus();
-    return { opened: true };
-  }
+let bdpWindow = null;
+function openLegalDatabaseWindow(which) {
+  const isBdp = which === "bdp";
+  const current = isBdp ? bdpWindow : italgiureWindow;
+  if (current && !current.isDestroyed()) { current.focus(); return Promise.resolve({ opened: true }); }
   const { session } = require("electron");
-  const italgiureSession = session.fromPartition("persist:studio-introcaso-italgiure");
-  italgiureWindow = new BrowserWindow({
+  const partition = isBdp ? "persist:studio-introcaso-bdp" : "persist:studio-introcaso-italgiure";
+  const win = new BrowserWindow({
     width: 1440, height: 950, minWidth: 980, minHeight: 700,
-    title: "Italgiure — Studio Legale Introcaso",
+    title: isBdp ? "Banca Dati di Merito — Studio Legale Introcaso" : "Italgiure — Studio Legale Introcaso",
     backgroundColor: "#ffffff",
-    webPreferences: {
-      session: italgiureSession,
-      nodeIntegration: false,
-      contextIsolation: true,
-      sandbox: true
-    }
+    webPreferences: { session: session.fromPartition(partition), nodeIntegration: false, contextIsolation: true, sandbox: true }
   });
-  italgiureWindow.webContents.setWindowOpenHandler(({ url }) => {
+  if (isBdp) bdpWindow = win; else italgiureWindow = win;
+  win.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith("https://")) shell.openExternal(url);
     return { action: "deny" };
   });
-  italgiureWindow.on("closed", () => { italgiureWindow = null; });
-  await italgiureWindow.loadURL("https://www.italgiure.giustizia.it/");
-  return { opened: true };
-});
+  win.on("closed", () => { if (isBdp) bdpWindow = null; else italgiureWindow = null; });
+  const url = isBdp ? "https://bdp.giustizia.it/search/standard?target=provvedimento&sort_field=data&sort_order=desc" : "https://www.italgiure.giustizia.it/";
+  return win.loadURL(url).then(() => ({ opened: true }));
+}
+ipcMain.handle("bdp:open", async () => openLegalDatabaseWindow("bdp"));
+ipcMain.handle("italgiure:open", async () => openLegalDatabaseWindow("italgiure"));
 
 function createWindow() {
   const win = new BrowserWindow({
