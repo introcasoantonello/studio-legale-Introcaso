@@ -1,0 +1,18 @@
+{
+  "name": "studio-legale-introcaso",
+  "version": "1.0.0",
+  "description": "Gestione locale dello Studio Legale Introcaso",
+  "main": "electron/main.cjs",
+  "author": "Studio Legale Introcaso",
+  "license": "UNLICENSED",
+  "scripts": {"start": "electron .", "dist:win": "electron-builder --win nsis"},
+  "devDependencies": {"electron": "34.2.0", "electron-builder": "25.1.8"},
+  "build": {
+    "appId": "it.studiolegaleintrocaso.desktop",
+    "productName": "Studio Legale Introcaso",
+    "directories": {"output": "dist"},
+    "files": ["index.html", "style.css", "app.js", "electron/**/*"],
+    "win": {"target": ["nsis"], "artifactName": "Studio-Legale-Introcaso-Setup-${version}.${ext}"},
+    "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true}
+  }
+}
