@@ -27,3 +27,7 @@ Non inviare dati identificativi, sanitari o coperti da segreto professionale sen
 
 ## Limiti professionali
 I collegamenti HTTPS alle fonti istituzionali e a ChatGPT si aprono nel browser esterno. Il modulo non deposita atti, non effettua notifiche e non sostituisce la verifica professionale. Normativa, giurisprudenza, termini e bozze devono essere controllati dall'avvocato.
+
+
+## Cartella locale ATTI
+Dal menu **Cartella ATTI** selezionare una cartella sul PC. Il percorso viene memorizzato localmente nel profilo dell'app. La scansione include PDF, DOCX, TXT e RTF (massimo 2.000 file; massimo 10 MB per documento). È possibile cercare parole nel testo dei documenti e aggiungere manualmente un documento alla chat GPT. Il contenuto viene trasmesso a OpenAI soltanto quando si invia la conversazione, non durante la scansione. I file DOC legacy, le scansioni senza testo OCR e i PDF protetti da password non sono leggibili in questa versione. I documenti restano nella cartella originale e non vengono copiati nel repository.
