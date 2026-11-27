@@ -12,6 +12,9 @@ async function readApiKey() {
   return safeStorage.decryptString(Buffer.from(data.key, "base64"));
 }
 
+const { clipboard } = require("electron");
+ipcMain.handle("clipboard:read", async () => clipboard.readText());
+
 ipcMain.handle("ai:status", async () => ({ configured: Boolean(await readApiKey()) }));
 
 ipcMain.handle("ai:save-key", async (_event, key) => {
