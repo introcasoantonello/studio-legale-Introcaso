@@ -1,16 +1,46 @@
-# Studio Legale Introcaso — strumenti giuridici
+# Studio Legale Introcaso — sistema di assistenza giuridica
 
-Repository di supporto al lavoro dello Studio Legale Introcaso.
+Repository di skill operative e linee guida per supportare le attività dello Studio Legale Introcaso. Le skill sono istruzioni specializzate: non sono software autonomo, non costituiscono una banca dati e non si attivano automaticamente in ChatGPT per il solo fatto di essere presenti su GitHub.
 
-## Skill
+## Moduli disponibili
 
-- [Diritto italiano](skills/diritto-italiano/SKILL.md): ricerca normativa e giurisprudenziale, analisi dei fascicoli e verifica delle fonti.
-- [Redazione atti civili](skills/redazione-atti-civili/SKILL.md): redazione e revisione di atti giudiziari di diritto civile e procedura civile, controllo processuale, strategia difensiva e rispetto dei modelli dello Studio.
+### Ricerca e analisi
+- [Diritto italiano](skills/diritto-italiano/SKILL.md) — metodo generale, fonti normative, analisi documentale e affidabilità.
+- [Ricerca giurisprudenziale avanzata](skills/ricerca-giurisprudenziale/SKILL.md) — ricerca e verifica di Cassazione, Corte costituzionale, giudici di merito e orientamenti.
+- [Analisi dei fascicoli](skills/analisi-fascicoli/SKILL.md) — inventario documenti, cronologia, matrice fatti/prove, incongruenze e lacune.
+
+### Redazione e contenzioso
+- [Redazione atti civili](skills/redazione-atti-civili/SKILL.md) — atti di cognizione, monitori, esecuzioni, opposizioni, famiglia, responsabilità civile e impugnazioni.
+- [Diritto amministrativo e TAR](skills/diritto-amministrativo-tar/SKILL.md) — ricorsi, motivi aggiunti, cautelari, accesso, silenzio e ottemperanza.
+- [Contratti e consulenza stragiudiziale](skills/contratti-consulenza-stragiudiziale/SKILL.md) — contratti, transazioni, diffide, messe in mora e pareri.
+
+### Organizzazione e verifica
+- [Scadenziario processuale](skills/scadenziario-processuale/SKILL.md) — calcolo documentato dei termini e promemoria.
+- [Compensi e spese](skills/calcolo-compensi-spese/SKILL.md) — parcelle, parametri, accessori, interessi, precetti e residui.
+- [Archivio modelli dello Studio](skills/archivio-modelli-studio/SKILL.md) — classificazione, riuso controllato, anonimizzazione e versionamento.
+- [Controllo qualità degli atti](skills/controllo-qualita-atti/SKILL.md) — controllo fattuale, giuridico, processuale e redazionale.
 
 ## Modelli
+- [Linee guida per l'archivio dei modelli](templates/README.md).
 
-- [Indicazioni per i modelli dello Studio](templates/README.md).
+## Flusso di lavoro consigliato
 
-## Regole fondamentali
+1. Acquisire i documenti e inventariare il fascicolo.
+2. Ricostruire fatti, cronologia, domande, prove e questioni.
+3. Verificare normativa e giurisprudenza sulle fonti effettivamente accessibili.
+4. Definire strategia e rito, controllando termini e preclusioni.
+5. Redigere utilizzando, se disponibile, il modello approvato più pertinente.
+6. Eseguire il controllo qualità e sottoporre la bozza all'avvocato.
+7. Conservare modelli e materiali soltanto dopo anonimizzazione e verifica delle autorizzazioni.
 
-Le skill sono istruzioni operative: non costituiscono una banca dati giuridica e non sostituiscono la verifica delle fonti ufficiali o delle banche dati professionali. Ogni riferimento normativo o giurisprudenziale deve essere verificato prima dell'utilizzo in un atto.
+## Regole inderogabili
+
+- Non inventare fatti, documenti, norme, precedenti, numeri, date, importi o termini.
+- Dichiarare quali fonti sono state realmente consultate e quali verifiche restano da fare.
+- Non dichiarare accesso a Italgiure o DeJure se non è avvenuto concretamente.
+- Proteggere segreto professionale e dati personali; non caricare fascicoli identificabili in repository pubblici.
+- Nessun deposito, notifica, invio o assunzione di impegni senza approvazione dell'avvocato.
+
+## Nota sull'attivazione
+
+La presenza dei file su GitHub non equivale all'installazione o all'attivazione automatica delle skill in ChatGPT. Per utilizzarle in un ambiente compatibile occorre importare o richiamare i relativi file secondo le funzioni supportate da quell'ambiente.
