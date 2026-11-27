@@ -44,3 +44,8 @@ Repository di skill operative e linee guida per supportare le attività dello St
 ## Nota sull'attivazione
 
 La presenza dei file su GitHub non equivale all'installazione o all'attivazione automatica delle skill in ChatGPT. Per utilizzarle in un ambiente compatibile occorre importare o richiamare i relativi file secondo le funzioni supportate da quell'ambiente.
+
+## Utilizzo con ChatGPT
+
+- [Guida completa all'utilizzo](ISTRUZIONI-UTILIZZO-CHATGPT.md) — come richiamare le skill, scegliere i moduli e lavorare sui fascicoli.
+- [Prompt rapido da copiare](PROMPT-AVVIO-CHATGPT.md) — istruzioni da incollare all'inizio di un nuovo incarico.
