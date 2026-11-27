@@ -5,7 +5,7 @@ Il workflow GitHub Actions compila automaticamente l'installer Windows. Aprire l
 
 ## Moduli
 
-Versione 1.5.0: OCR locale dei PDF scannerizzati (fino a 30 pagine per documento) e accesso integrato alla Banca Dati di Merito del Ministero della Giustizia. Il modello linguistico italiano OCR viene scaricato al primo utilizzo e richiede una connessione internet per il download iniziale.
+Versione 1.5.1: OCR locale dei PDF scannerizzati (fino a 30 pagine per documento) e accesso integrato alla Banca Dati di Merito del Ministero della Giustizia. Il modello linguistico italiano OCR viene scaricato al primo utilizzo e richiede una connessione internet per il download iniziale.
 Fascicoli, redazione assistita, assistente GPT integrato, ricerca giuridica online con fonti, scadenziario, calcoli aritmetici, archivio modelli e collegamento alla cartella ATTI locale.
 
 ### Redazione assistita multidisciplinare
@@ -15,7 +15,7 @@ La sezione **Redazione atti** comprende percorsi guidati per diritto civile e pr
 1. Creare una API key nel proprio progetto OpenAI Platform.
 2. Aprire **Assistente AI** nell'applicazione.
 3. Incollare la chiave nel campo dedicato e premere **Salva chiave in modo cifrato**.
-4. Verificare il nome del modello disponibile nel proprio progetto API; il campo modello è modificabile.
+4. Inserire nel campo modello l'identificativo esatto di un modello effettivamente disponibile nel proprio progetto API. Non viene preimpostato un nome di modello, perché disponibilità e denominazioni dipendono dal progetto.
 5. Scrivere la richiesta e premere **Invia a GPT**.
 
 La chiave è cifrata tramite Electron `safeStorage` e Windows DPAPI e viene conservata nel profilo utente dell'app, non nel repository e non nel renderer. La chiave non viene restituita all'interfaccia. È possibile rimuoverla dal pulsante dedicato. Se la protezione del sistema non è disponibile, il programma rifiuta di salvarla in chiaro.
@@ -54,8 +54,8 @@ La sezione **Italgiure** apre la piattaforma ufficiale del Ministero della Giust
 La sezione **Italgiure** apre il portale ufficiale in una finestra dedicata dell'applicazione Electron, con sessione browser persistente separata dal resto dell'app. L'utente effettua personalmente il login nel portale; le credenziali non sono lette, inviate all'assistente AI o salvate dall'app come password. I cookie/sessione sono gestiti dal browser incorporato. È disponibile anche l'apertura nel browser esterno. Non è stata implementata un'API di interrogazione automatica: non è stata individuata documentazione pubblica ufficiale che esponga un'interfaccia di questo tipo. Per analizzare i provvedimenti, scaricarli dal portale e inserirli nella cartella ATTI; l'invio all'API AI avviene solo su iniziativa esplicita dell'utente.
 
 
-## Banca Dati di Merito (1.5.0)
+## Banca Dati di Merito (1.5.1)
 La sezione **Banche dati** apre la Banca Dati di Merito del Ministero della Giustizia in una finestra Electron dedicata, con sessione persistente separata e accesso diretto alla ricerca dei provvedimenti. Login, consultazione e download restano manuali e sotto il controllo dell'utente. Non è stata verificata né implementata un'API pubblica di ricerca automatica: i provvedimenti si scaricano dal portale e si importano nella cartella ATTI. Restano applicabili le condizioni d'uso del portale.
 
-## OCR dei PDF scannerizzati (1.5.0)
+## OCR dei PDF scannerizzati (1.5.1)
 Quando il PDF non contiene testo estraibile, l'app prova l'OCR locale con Tesseract in lingua italiana e PDF.js. Il riconoscimento è limitato a 30 pagine per documento. Il modello italiano viene scaricato al primo utilizzo; per questo passaggio è necessaria una connessione internet. Il testo riconosciuto può contenere errori e deve essere confrontato con la scansione originale. I file non vengono caricati automaticamente su OpenAI: la trasmissione avviene solo quando l'utente seleziona il documento e avvia l'analisi AI.
