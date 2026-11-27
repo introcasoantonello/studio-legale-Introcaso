@@ -1,6 +1,6 @@
 {
   "name": "studio-legale-introcaso",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Gestione locale dello Studio Legale Introcaso con assistente GPT integrato",
   "main": "electron/main.cjs",
   "author": "Studio Legale Introcaso",
