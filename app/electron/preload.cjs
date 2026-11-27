@@ -3,5 +3,10 @@ contextBridge.exposeInMainWorld("studioAI", {
   status: () => ipcRenderer.invoke("ai:status"),
   saveKey: key => ipcRenderer.invoke("ai:save-key", key),
   deleteKey: () => ipcRenderer.invoke("ai:delete-key"),
-  chat: payload => ipcRenderer.invoke("ai:chat", payload)
+  chat: payload => ipcRenderer.invoke("ai:chat", payload),
+  libraryFolder: () => ipcRenderer.invoke("library:get-folder"),
+  chooseLibraryFolder: () => ipcRenderer.invoke("library:choose-folder"),
+  scanLibrary: () => ipcRenderer.invoke("library:scan"),
+  readLibraryFile: relativePath => ipcRenderer.invoke("library:read-file", relativePath),
+  searchLibrary: query => ipcRenderer.invoke("library:search", query)
 });
