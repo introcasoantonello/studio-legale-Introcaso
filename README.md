@@ -29,6 +29,10 @@ Il modulo Assistente giuridico italiano può utilizzare Firecrawl quando il rela
 
 È disponibile una prima applicazione utilizzabile dal browser, senza installazione: [apri la cartella dell'app](app/) e consulta le [istruzioni di avvio](app/README.md). Include fascicoli, bozze di atti, traccia per la ricerca giuridica, scadenziario, calcoli aritmetici e archivio modelli. I dati restano nel browser del dispositivo. Questa versione non integra ancora AI, banche dati giuridiche o deposito telematico.
 
+## Applicazione Windows e Assistente AI
+
+La cartella [app](app/) contiene l'applicazione dello Studio. È configurata la compilazione automatica dell'installer Windows tramite GitHub Actions: consultare [le istruzioni](app/README.md) per scaricare il file Setup dopo il completamento del workflow. Il modulo Assistente AI prepara prompt giuridici da copiare in ChatGPT; non trasmette automaticamente fascicoli e non sostituisce la verifica professionale. La prima versione desktop non è ancora firmata digitalmente.
+
 ## Modelli
 - [Linee guida per l'archivio dei modelli](templates/README.md).
 
