@@ -42,3 +42,7 @@ Il modulo Ricerca giuridica può inviare quesiti al web search integrato nella O
 
 ## Carta intestata e analisi fascicolo (1.4.1)
 Le risposte dell'assistente possono essere esportate in formato Word compatibile (.doc) con intestazione conforme al modello ODT fornito dallo Studio: AVVOCATO, ANTONELLO INTROCASO, Patrocinante in Cassazione e riga separatrice; il piè di pagina riproduce la linea del modello. Il formato è modificabile in Word/LibreOffice e va controllato prima del deposito. Nella Cartella ATTI è disponibile la selezione di 2-4 documenti per analisi comparativa tramite assistente AI; i documenti vengono letti localmente e trasmessi all'API soltanto quando viene avviata l'analisi.
+
+
+## Collegamento a Italgiure (1.4.2)
+La sezione **Italgiure** apre la piattaforma ufficiale del Ministero della Giustizia e il sito di Cassa Forense. L'autenticazione avviene direttamente sul portale, con le credenziali personali abilitate; l'applicazione non raccoglie né conserva username o password e non automatizza l'accesso, le ricerche o i download. Per analizzare un provvedimento, scaricarlo dal portale in PDF o DOCX e salvarlo nella cartella locale collegata in **Cartella ATTI**. Da lì è possibile leggerlo, confrontarlo con altri documenti o aggiungerlo manualmente alla chat. I documenti vengono trasmessi all'API OpenAI soltanto quando l'utente avvia esplicitamente l'analisi.
