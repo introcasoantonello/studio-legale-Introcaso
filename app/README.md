@@ -1,18 +1,29 @@
-# Studio Legale Introcaso — applicazione
+# Studio Legale Introcaso — applicazione Windows
 
-## Installazione Windows
-Il repository compila automaticamente un programma Windows tramite GitHub Actions. Dopo l'esecuzione del workflow **Build Windows desktop app**, aprire la scheda Actions del repository, selezionare l'esecuzione completata e scaricare l'artefatto **Studio-Legale-Introcaso-Windows-Installer**. Estrarre lo ZIP e avviare il file Setup `.exe`.
-
-Il programma è confezionato con Electron e utilizza i file locali dell'applicazione. Non è ancora firmato digitalmente: Windows SmartScreen potrebbe mostrare un avviso.
+## Installazione
+Il workflow GitHub Actions compila automaticamente l'installer Windows. Aprire la scheda Actions del repository, selezionare l'esecuzione completata e scaricare l'artefatto **Studio-Legale-Introcaso-Windows-Installer**. Estrarre lo ZIP e avviare il file Setup `.exe`.
 
 ## Moduli
-Fascicoli; redazione e salvataggio bozze; Assistente AI personale senza API; ricerca giuridica; scadenziario manuale; calcoli aritmetici; archivio modelli.
+Fascicoli, bozze atti, assistente GPT integrato, ricerca giuridica, scadenziario, calcoli aritmetici e archivio modelli.
 
-## AI e banche dati
-L'assistente personale non usa API OpenAI, non richiede chiavi API e non comporta fatturazione API. Genera una richiesta sul computer, permette di controllarla, la copia negli appunti e apre ChatGPT nel browser. L'utente deve incollarla e inviarla manualmente con il proprio account ChatGPT. Non esiste un collegamento automatico alla sessione ChatGPT, né un modello AI installato localmente: la generazione delle risposte richiede la connessione a ChatGPT. Il programma non accede automaticamente a Italgiure, DeJure o altre banche dati riservate.
+## Assistente GPT e configurazione API
+1. Creare una API key nel proprio progetto OpenAI Platform.
+2. Aprire **Assistente AI** nell'applicazione.
+3. Incollare la chiave nel campo dedicato e premere **Salva chiave in modo cifrato**.
+4. Verificare il nome del modello disponibile nel proprio progetto API; il campo modello è modificabile.
+5. Scrivere la richiesta e premere **Invia a GPT**.
 
-## Dati e riservatezza
-I dati dell'app sono conservati nel profilo locale tramite localStorage e non sono sincronizzati né cifrati da questa applicazione. Soltanto il testo che l'utente sceglie di copiare e inviare a ChatGPT viene trasmesso al servizio online. Effettuare backup sicuri e non usare dispositivi condivisi per dati riservati. Non inserire fascicoli identificabili in servizi esterni senza aver valutato base giuridica, istruzioni, misure di sicurezza e segreto professionale.
+La chiave è cifrata tramite Electron `safeStorage` e Windows DPAPI e viene conservata nel profilo utente dell'app, non nel repository e non nel renderer. La chiave non viene restituita all'interfaccia. È possibile rimuoverla dal pulsante dedicato. Se la protezione del sistema non è disponibile, il programma rifiuta di salvarla in chiaro.
+
+L'applicazione invia le richieste all'endpoint OpenAI Responses API con `store:false`. Le conversazioni sono conservate in memoria nella finestra corrente e non vengono salvate automaticamente in localStorage. La trasmissione al servizio OpenAI è necessaria per ricevere risposte: non è un modello offline.
+
+## Costi e account
+La fatturazione API è separata dall'abbonamento ChatGPT. L'uso dipende dal modello selezionato, dai token e dalle condizioni del progetto API. Verificare prezzi, limiti e disponibilità del modello nella piattaforma OpenAI prima dell'uso.
+
+## Dati, riservatezza e sicurezza
+I dati dei fascicoli, delle bozze e dello scadenzario già gestiti dall'applicazione sono conservati nel profilo locale del browser Electron. In questa versione non sono cifrati. La chiave API è invece cifrata dal sistema operativo. I messaggi inviati all'API vengono trasmessi a OpenAI; `store:false` richiede di non conservare la risposta come oggetto API, ma non equivale a una garanzia generale di zero retention per ogni trattamento. Valutare sempre le impostazioni del progetto e i termini applicabili.
+
+Non inviare dati identificativi, sanitari o coperti da segreto professionale senza aver valutato necessità, anonimizzazione, base giuridica e misure di sicurezza. Predisporre backup protetti. Non inserire mai chiavi API nel codice o su GitHub.
 
 ## Limiti professionali
-Non effettua depositi o notifiche, non determina autonomamente termini processuali e non sostituisce la verifica dell'avvocato. Tutte le bozze, fonti, scadenze e somme devono essere controllate.
+Il modulo non deposita atti, non effettua notifiche e non sostituisce la verifica professionale. Normativa, giurisprudenza, termini e bozze devono essere controllati dall'avvocato.
