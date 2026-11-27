@@ -4,3 +4,8 @@
 #library-list .item,#library-results .item{padding:12px 0}#library-list .item p,#library-results .item p{margin:5px 0 9px}#library-path{overflow-wrap:anywhere;padding:6px 0}
 
 .inline-check{display:inline-flex;align-items:center;gap:7px;margin:4px 14px 4px 0}.inline-check input{width:auto}.source-links{border-top:1px solid var(--line);margin-top:12px;padding-top:9px;display:grid;gap:5px}.source-links strong{font-size:11px;color:var(--muted)}.source-links a,.official-portals a{color:#245b91;font-size:13px;overflow-wrap:anywhere}.official-portals{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+
+
+/* Accesso diretto alla casella PEC */
+.sidebar nav .pec-link{display:block;margin:10px 12px 0;padding:11px 14px;border:1px solid rgba(255,255,255,.28);border-radius:8px;color:#fff;text-decoration:none;font-weight:600;text-align:center;background:rgba(255,255,255,.08)}
+.sidebar nav .pec-link:hover{background:rgba(255,255,255,.16)}
