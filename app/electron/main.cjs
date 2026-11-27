@@ -176,6 +176,35 @@ ipcMain.handle("library:search", async (_event, query) => {
   return { results, scanned: files.length };
 });
 
+
+let italgiureWindow = null;
+ipcMain.handle("italgiure:open", async () => {
+  if (italgiureWindow && !italgiureWindow.isDestroyed()) {
+    italgiureWindow.focus();
+    return { opened: true };
+  }
+  const { session } = require("electron");
+  const italgiureSession = session.fromPartition("persist:studio-introcaso-italgiure");
+  italgiureWindow = new BrowserWindow({
+    width: 1440, height: 950, minWidth: 980, minHeight: 700,
+    title: "Italgiure — Studio Legale Introcaso",
+    backgroundColor: "#ffffff",
+    webPreferences: {
+      session: italgiureSession,
+      nodeIntegration: false,
+      contextIsolation: true,
+      sandbox: true
+    }
+  });
+  italgiureWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith("https://")) shell.openExternal(url);
+    return { action: "deny" };
+  });
+  italgiureWindow.on("closed", () => { italgiureWindow = null; });
+  await italgiureWindow.loadURL("https://www.italgiure.giustizia.it/");
+  return { opened: true };
+});
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 1360, height: 900, minWidth: 900, minHeight: 650,
