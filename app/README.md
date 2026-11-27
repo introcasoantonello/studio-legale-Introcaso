@@ -38,3 +38,7 @@ Dal menu **Cartella ATTI** selezionare una cartella sul PC. Il percorso viene me
 
 ## Ricerca giuridica online (versione 1.3.0)
 Il modulo Ricerca giuridica può inviare quesiti al web search integrato nella OpenAI Responses API. È possibile limitare la ricerca a domini istituzionali (Normattiva, Gazzetta Ufficiale, Cassazione, Corte costituzionale, Giustizia amministrativa, EUR-Lex e CURIA) oppure utilizzare una ricerca web ampia. Le citazioni URL restituite dall'API sono mostrate come collegamenti cliccabili nella chat. La ricerca è subordinata alla disponibilità del modello, della chiave API e della fatturazione API. Il filtro istituzionale limita i domini, ma non garantisce copertura esaustiva né sostituisce banche dati professionali o la lettura del provvedimento integrale.
+
+
+## Carta intestata e analisi fascicolo (1.4.1)
+Le risposte dell'assistente possono essere esportate in formato Word compatibile (.doc) con intestazione conforme al modello ODT fornito dallo Studio: AVVOCATO, ANTONELLO INTROCASO, Patrocinante in Cassazione e riga separatrice; il piè di pagina riproduce la linea del modello. Il formato è modificabile in Word/LibreOffice e va controllato prima del deposito. Nella Cartella ATTI è disponibile la selezione di 2-4 documenti per analisi comparativa tramite assistente AI; i documenti vengono letti localmente e trasmessi all'API soltanto quando viene avviata l'analisi.
