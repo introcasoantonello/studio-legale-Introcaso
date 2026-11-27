@@ -5,7 +5,7 @@ Il workflow GitHub Actions compila automaticamente l'installer Windows. Aprire l
 
 ## Moduli
 
-Versione 1.5.1: OCR locale dei PDF scannerizzati (fino a 30 pagine per documento) e accesso integrato alla Banca Dati di Merito del Ministero della Giustizia. Il modello linguistico italiano OCR viene scaricato al primo utilizzo e richiede una connessione internet per il download iniziale.
+Versione 1.6.0: analisi strutturata di fascicoli da 1 a 4 documenti, confronto documentale, controllo qualità giuridico-processuale delle bozze e prompt rafforzati per ricerca e redazione. Include OCR locale dei PDF scannerizzati (fino a 30 pagine per documento) e accesso integrato alla Banca Dati di Merito del Ministero della Giustizia. Il modello linguistico italiano OCR viene scaricato al primo utilizzo e richiede una connessione internet per il download iniziale.
 Fascicoli, redazione assistita, assistente GPT integrato, ricerca giuridica online con fonti, scadenziario, calcoli aritmetici, archivio modelli e collegamento alla cartella ATTI locale.
 
 ### Redazione assistita multidisciplinare
@@ -15,7 +15,7 @@ La sezione **Redazione atti** comprende percorsi guidati per diritto civile e pr
 1. Creare una API key nel proprio progetto OpenAI Platform.
 2. Aprire **Assistente AI** nell'applicazione.
 3. Incollare la chiave nel campo dedicato e premere **Salva chiave in modo cifrato**.
-4. Inserire nel campo modello l'identificativo esatto di un modello effettivamente disponibile nel proprio progetto API. Non viene preimpostato un nome di modello, perché disponibilità e denominazioni dipendono dal progetto.
+4. Il campo modello propone `gpt-5.4-mini` come valore iniziale. Verificare che il modello sia abilitato nel proprio progetto API; se non disponibile, sostituirlo con un identificativo effettivamente presente nella piattaforma.
 5. Scrivere la richiesta e premere **Invia a GPT**.
 
 La chiave è cifrata tramite Electron `safeStorage` e Windows DPAPI e viene conservata nel profilo utente dell'app, non nel repository e non nel renderer. La chiave non viene restituita all'interfaccia. È possibile rimuoverla dal pulsante dedicato. Se la protezione del sistema non è disponibile, il programma rifiuta di salvarla in chiaro.
@@ -59,3 +59,7 @@ La sezione **Banche dati** apre la Banca Dati di Merito del Ministero della Gius
 
 ## OCR dei PDF scannerizzati (1.5.1)
 Quando il PDF non contiene testo estraibile, l'app prova l'OCR locale con Tesseract in lingua italiana e PDF.js. Il riconoscimento è limitato a 30 pagine per documento. Il modello italiano viene scaricato al primo utilizzo; per questo passaggio è necessaria una connessione internet. Il testo riconosciuto può contenere errori e deve essere confrontato con la scansione originale. I file non vengono caricati automaticamente su OpenAI: la trasmissione avviene solo quando l'utente seleziona il documento e avvia l'analisi AI.
+
+
+## Analisi fascicolo e controllo qualità (1.6.0)
+Nella sezione **Cartella ATTI** è possibile selezionare da 1 a 4 documenti e avviare **Analizza fascicolo selezionato**. L'assistente prepara una scheda, inventario, cronologia, matrice fatti/prove, incongruenze, lacune e questioni da approfondire, distinguendo fatti documentati e allegazioni. La funzione **Confronta documenti selezionati** resta disponibile separatamente. Dopo ogni risposta dell'assistente è disponibile **Controllo qualità giuridico-processuale**: esegue una revisione indipendente della bozza, classifica i rilievi come bloccanti, rilevanti o formali e, quando attivata, ricerca fonti istituzionali per le norme e i precedenti da verificare. La verifica automatica non certifica la correttezza né sostituisce il controllo dell'avvocato.
